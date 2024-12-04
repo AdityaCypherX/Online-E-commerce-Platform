@@ -12,3 +12,6 @@ Use the above schema to create tables in MySQL Workbench or your preferred datab
 Add the JDBC driver to your project:
 
 Maven dependency (in pom.xml
+
+5. Database Connection Utility
+Create a DatabaseConnection class.
