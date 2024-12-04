@@ -1,0 +1,11 @@
+src/
+    main/
+        java/
+            com/
+                ecommerce/
+                    dao/
+                    model/
+                    service/
+                    util/
+        resources/
+pom.xml (for Maven) or build.gradle (for Gradle)
