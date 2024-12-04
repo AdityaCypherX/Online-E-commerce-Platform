@@ -38,3 +38,28 @@ public class UserDAO {
         return users;
     }
 }
+
+//ProductDAO Class: For products table operations.
+
+package com.ecommerce.dao;
+
+import com.ecommerce.util.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class ProductDAO {
+    public void addProduct(String name, String description, double price, int sellerId) {
+        String sql = "INSERT INTO products (name, description, price, seller_id) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            stmt.setString(2, description);
+            stmt.setDouble(3, price);
+            stmt.setInt(4, sellerId);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
