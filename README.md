@@ -15,3 +15,7 @@ Maven dependency (in pom.xml
 
 5. Database Connection Utility
 Create a DatabaseConnection class.
+
+6. DAO Classes
+UserDAO Class: For users table operations.
+ProductDAO Class: For products table operations.
