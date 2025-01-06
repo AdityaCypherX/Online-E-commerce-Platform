@@ -96,3 +96,28 @@ Ensure templates are professional, visually appealing, and responsive.
 JavaScript Validation and Interactivity (2 marks)
 Implement effective client-side validation and interactive features.
 
+
+Step 1: Define the project structure
+
+We'll begin by adding the foundational files for the project. This includes:
+
+pom.xml: For Maven dependencies and configuration.
+web.xml: For Servlet configuration.
+Core Servlet and supporting
+
+Step 2: Integration of DAO, Service Layers, and JSP Updates
+
+Here's what has been added:
+
+Model Class: User for user data.
+DAO Layer: UserDAO for managing user storage.
+Service Layer: UserService for business logic.
+Servlet Update: UserServlet now interacts with the service layer for user management.
+JSP Update: userList.jsp to display all registered users.
+Form Handling: Added a form in userList.jsp for user registration.
+Unit Test: UserServiceTest to validate the UserService functionality.
+
+Next Steps:
+
+Add error handling mechanisms in Servlets.
+Enhance input validation.
