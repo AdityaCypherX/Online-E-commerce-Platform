@@ -1,0 +1,21 @@
+ProjectName/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── com.example.servlets/      # Servlet files
+│   │   │   ├── com.example.dao/           # Data access objects
+│   │   │   ├── com.example.services/      # Service layer
+│   │   │   └── com.example.models/        # Models (POJOs)
+│   │   ├── resources/
+│   │   │   └── application.properties     # Configuration files
+│   │   └── webapp/
+│   │       ├── WEB-INF/
+│   │       │   ├── web.xml                # Deployment descriptor
+│   │       │   ├── views/
+│   │       │   │   └── JSP files
+│   │       │   └── lib/
+│   │       └── static/                    # CSS, JS, and other static assets
+│   ├── test/
+│       └── java/                          # Unit test files
+├── pom.xml                                # Maven configuration file
+└── README.md                              # Project documentation
