@@ -1,0 +1,158 @@
+// Adding DAO, Service layers, and their integration with the servlet.
+
+package com.example.models;
+
+// Model Class for User
+public class User {
+    private String username;
+    private String email;
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+package com.example.dao;
+
+import com.example.models.User;
+import java.util.ArrayList;
+import java.util.List;
+
+// DAO Class for User Management
+public class UserDAO {
+    private static final List<User> users = new ArrayList<>();
+
+    public void saveUser(User user) {
+        users.add(user);
+    }
+
+    public List<User> getAllUsers() {
+        return new ArrayList<>(users);
+    }
+}
+
+package com.example.services;
+
+import com.example.dao.UserDAO;
+import com.example.models.User;
+
+import java.util.List;
+
+// Service Class for Business Logic
+public class UserService {
+    private final UserDAO userDAO = new UserDAO();
+
+    public void registerUser(String username, String email) {
+        User user = new User(username, email);
+        userDAO.saveUser(user);
+    }
+
+    public List<User> getUsers() {
+        return userDAO.getAllUsers();
+    }
+}
+
+package com.example.servlets;
+
+import com.example.services.UserService;
+import com.example.models.User;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/user")
+public class UserServlet extends HttpServlet {
+    private final UserService userService = new UserService();
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<User> users = userService.getUsers();
+        request.setAttribute("users", users);
+        request.getRequestDispatcher("/WEB-INF/views/userList.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+
+        userService.registerUser(username, email);
+        response.sendRedirect("/user");
+    }
+}
+
+// Updated JSP to display a list of users (userList.jsp)
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+    <h1>Registered Users</h1>
+    <table border="1">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <c:forEach var="user" items="${users}">
+            <tr>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+            </tr>
+        </c:forEach>
+    </table>
+    <br/>
+    <form method="post" action="/user">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <br/>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <br/>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
+
+// Unit Test Class for UserService
+package com.example.services;
+
+import com.example.models.User;
+import org.junit.Test;
+import java.util.List;
+import static org.junit.Assert.*;
+
+public class UserServiceTest {
+    @Test
+    public void testRegisterUser() {
+        UserService userService = new UserService();
+        userService.registerUser("JohnDoe", "john@example.com");
+
+        List<User> users = userService.getUsers();
+        assertEquals(1, users.size());
+        assertEquals("JohnDoe", users.get(0).getUsername());
+        assertEquals("john@example.com", users.get(0).getEmail());
+    }
+}
