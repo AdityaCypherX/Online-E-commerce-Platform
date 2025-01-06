@@ -21,12 +21,12 @@ UserDAO Class: For users table operations.
 ProductDAO Class: For products table operations.
 
 1. Design HTML Templates for User Management
+
 Templates to Include:
 Login Page: Include fields for email/username and password with a "Forgot Password" link.
 Registration Page: Include fields for name, email, password, confirm password, and any other relevant details.
 User Profile Page: Include user information displayed with options to edit profile or change the password.
 Other Pages (Optional): Password reset, dashboard, etc.
-
 
 Semantic HTML:
 Use tags like <header>, <nav>, <main>, <section>, and <footer> for proper structure.
@@ -34,7 +34,10 @@ Use form elements such as <input>, <label>, and <button> for accessibility.
 Best Practices:
 Use meaningful IDs and classes.
 Ensure the markup is clean and readable.
+
+
 2. Style HTML Templates Using CSS and Bootstrap
+
 Bootstrap Integration:
 Use Bootstrap's grid system for responsiveness.
 Apply components like form-control, btn, card, navbar, etc., for styling.
@@ -45,7 +48,9 @@ Responsiveness:
 Test the templates on different screen sizes using media queries or Bootstrap's responsive classes.
 Consistency:
 Maintain a consistent color scheme, typography, and spacing.
+
 3. Implement JavaScript for Form Validation and Interactivity
+
 Form Validation:
 Validate inputs like email format, password strength, and required fields.
 Provide immediate feedback for invalid inputs using dynamic messages.
@@ -59,7 +64,9 @@ Error messages displayed inline near the invalid field.
 Error Handling:
 Display user-friendly error messages.
 Ensure validations trigger on both form submission and real-time input changes.
+
 4. Code Quality
+
 File Organization:
 Use folders like css/, js/, images/, and html/ for better organization.
 Documentation:
@@ -88,3 +95,4 @@ CSS and Bootstrap Styling (2 marks)
 Ensure templates are professional, visually appealing, and responsive.
 JavaScript Validation and Interactivity (2 marks)
 Implement effective client-side validation and interactive features.
+
